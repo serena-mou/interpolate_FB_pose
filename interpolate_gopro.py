@@ -16,7 +16,6 @@ import re
 import argparse
 import sys
 
-
 class interpolate_GP():
     def __init__(self, im_root, save_path, pose, date, thresh, tz):
 
