@@ -165,10 +165,10 @@ class interpolate_GP():
                 
                 for i,dt in enumerate(day_list):
                     diff = datetime.timestamp(img_time)-datetime.timestamp(dt)
-                    if diff > 0 and diff < min_p:
+                    if diff > 0 and diff <= min_p:
                         ind_pp = i
                         min_p = diff
-                    elif diff < 0 and diff > min_n:
+                    elif diff < 0 and diff >= min_n:
                         ind_nn = i
                         min_n = diff
                     elif diff == 0:
@@ -208,7 +208,7 @@ def arg_parse():
     parser.add_argument("-ir", "--im_root", dest = "im_root",
             help = "Path to GoPro root folder. Required if --root not set.", default = None, type = str, required=False)
 
-    parser.add_argument("-s", "--save_path", dest = "save_path",
+    parser.add_argument("-s", "--save", dest = "save",
             help = "Path (including name) of csv file to save results. Required if --root not set.", default = None, type = str, required=False)
 
     parser.add_argument("-p", "--pose", dest = "pose",
@@ -230,14 +230,14 @@ def main():
     args = arg_parse()
     if args.root:
         im_root = os.path.join(args.root,"images")
-        save_path = os.path.join(args.root,"output.csv")
+        save = os.path.join(args.root,"output.csv")
         pose = os.path.join(args.root,"pose.csv")
     else:
         im_root = args.im_root
-        save_path = args.save_path
+        save = args.save
         pose = args.pose
     
-    interp = interpolate_GP(im_root, save_path, pose, args.date, args.thresh, args.tz)
+    interp = interpolate_GP(im_root, save, pose, args.date, args.thresh, args.tz)
     interp.run()
 
     print("DONE")
