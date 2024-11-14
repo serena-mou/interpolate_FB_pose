@@ -16,3 +16,5 @@ Interpolate the pose from FloatyBoat GPS and match to timestamps on GoPro images
 2. Start GoPro around the same time as starting the mission from the FloatyBoat. The GPS coordinates are not being stored on the FloatyBoat if there is no mission running. 
 3. Copy the GoPro images off the SD card in the GoPro. Save them to your own directory, keeping the GoPro default file structure. eg. `100GOPRO, 101GOPRO ... 110GOPRO`
 4. Take the SD card out of the Teensy from inside the yellow box of the FloatyBoat and copy the file `logs/pose.csv` to your own directory. 
+
+![alt text](https://github.com/serena-mou/interpolate_FB_pose/blob/4770e04e5c95b05409013c71f07631987bd36181/examples/FB_SD.jpg?raw=true)
